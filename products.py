@@ -1,16 +1,29 @@
+import os #operating system	
+products = []
+
+#这个只是要让我们知道import os 还有 if.path.isfile 的功能
+if os.path.isfile('products.csv'): #检查档案在不在
+	print('yeah! file is found')
 #读档案
 #strip 是把\n去掉
 #split 是遇到豆点就切一刀，然后变成清单 or split切割完的结果是清单
 #continue 的功能是跳到下一段，只能在if 或 with 用,而且通常会在最开始的时候写continue，不然执行完了在跳过就没有意义了
-products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,价格' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
 
-print(products)
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,价格' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+
+	print(products)	
+else:
+	print('file is not found')
+
+
+
+
+
 
 #让使用者输入
 while True:
